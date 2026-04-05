@@ -70,8 +70,8 @@ http://localhost:8080
 
 These users are inserted automatically when PostgreSQL starts:
 
-| Role | Email | Token |
-|------|-------|-------|
+| Role - Email - Token |
+|----------------------|
 | Admin - `admin@zorvyn.com` - `admin-token` |
 | Analyst - `analyst@zorvyn.com` - `analyst-token` |
 | Viewer - `viewer@zorvyn.com` - `viewer-token` |
@@ -82,8 +82,8 @@ Use the token in the request header:
 
 * Role Access
 
-| Role | Permissions |
-|------|-------------|
+| Role - Permissions |
+|--------------------|
 | Viewer -> Can access dashboard summary only |
 | Analyst -> Can view records and dashboard summary |
 | Admin -> Full access to users, records and dashboard
