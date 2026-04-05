@@ -1,0 +1,126 @@
+<svg width="1500" height="960" viewBox="0 0 1500 960" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0 0L12 6L0 12V0Z" fill="#334155"/>
+    </marker>
+  </defs>
+
+  <rect width="1500" height="960" fill="#F8FAFC"/>
+  <text x="750" y="52" text-anchor="middle" font-size="30" font-family="Segoe UI, Arial, sans-serif" fill="#0F172A" font-weight="700">
+    Finance Dashboard Backend - Request Flow
+  </text>
+  <text x="750" y="84" text-anchor="middle" font-size="15" font-family="Segoe UI, Arial, sans-serif" fill="#475569">
+    Typical lifecycle for record and dashboard API requests
+  </text>
+
+  <rect x="610" y="120" width="280" height="70" rx="18" fill="#DBEAFE" stroke="#2563EB" stroke-width="2"/>
+  <text x="750" y="162" text-anchor="middle" font-size="21" font-family="Segoe UI, Arial, sans-serif" fill="#1E3A8A" font-weight="700">
+    1. Client sends request
+  </text>
+
+  <rect x="610" y="240" width="280" height="70" rx="18" fill="#E0F2FE" stroke="#0284C7" stroke-width="2"/>
+  <text x="750" y="270" text-anchor="middle" font-size="20" font-family="Segoe UI, Arial, sans-serif" fill="#0C4A6E" font-weight="700">
+    2. BaseHandler
+  </text>
+  <text x="750" y="293" text-anchor="middle" font-size="14" font-family="Segoe UI, Arial, sans-serif" fill="#0C4A6E">
+    CORS headers, method checks, common error handling
+  </text>
+
+  <rect x="610" y="360" width="280" height="70" rx="18" fill="#DCFCE7" stroke="#16A34A" stroke-width="2"/>
+  <text x="750" y="390" text-anchor="middle" font-size="20" font-family="Segoe UI, Arial, sans-serif" fill="#14532D" font-weight="700">
+    3. AuthService
+  </text>
+  <text x="750" y="413" text-anchor="middle" font-size="14" font-family="Segoe UI, Arial, sans-serif" fill="#14532D">
+    Reads X-Auth-Token and loads user from users table
+  </text>
+
+  <rect x="610" y="480" width="280" height="70" rx="18" fill="#FEF3C7" stroke="#D97706" stroke-width="2"/>
+  <text x="750" y="510" text-anchor="middle" font-size="20" font-family="Segoe UI, Arial, sans-serif" fill="#92400E" font-weight="700">
+    4. AccessManager
+  </text>
+  <text x="750" y="533" text-anchor="middle" font-size="14" font-family="Segoe UI, Arial, sans-serif" fill="#92400E">
+    Checks role strategy: VIEWER / ANALYST / ADMIN
+  </text>
+
+  <rect x="230" y="620" width="300" height="120" rx="18" fill="#FCE7F3" stroke="#DB2777" stroke-width="2"/>
+  <text x="380" y="660" text-anchor="middle" font-size="22" font-family="Segoe UI, Arial, sans-serif" fill="#9D174D" font-weight="700">
+    5A. Dashboard path
+  </text>
+  <text x="380" y="692" text-anchor="middle" font-size="15" font-family="Segoe UI, Arial, sans-serif" fill="#9D174D">
+    DashboardHandler
+  </text>
+  <text x="380" y="717" text-anchor="middle" font-size="15" font-family="Segoe UI, Arial, sans-serif" fill="#9D174D">
+    DashboardService
+  </text>
+
+  <rect x="600" y="620" width="300" height="120" rx="18" fill="#EDE9FE" stroke="#7C3AED" stroke-width="2"/>
+  <text x="750" y="660" text-anchor="middle" font-size="22" font-family="Segoe UI, Arial, sans-serif" fill="#4C1D95" font-weight="700">
+    5B. Record path
+  </text>
+  <text x="750" y="692" text-anchor="middle" font-size="15" font-family="Segoe UI, Arial, sans-serif" fill="#5B21B6">
+    RecordHandler
+  </text>
+  <text x="750" y="717" text-anchor="middle" font-size="15" font-family="Segoe UI, Arial, sans-serif" fill="#5B21B6">
+    RecordService
+  </text>
+
+  <rect x="970" y="620" width="300" height="120" rx="18" fill="#FEE2E2" stroke="#DC2626" stroke-width="2"/>
+  <text x="1120" y="660" text-anchor="middle" font-size="22" font-family="Segoe UI, Arial, sans-serif" fill="#991B1B" font-weight="700">
+    5C. User path
+  </text>
+  <text x="1120" y="692" text-anchor="middle" font-size="15" font-family="Segoe UI, Arial, sans-serif" fill="#991B1B">
+    UserHandler
+  </text>
+  <text x="1120" y="717" text-anchor="middle" font-size="15" font-family="Segoe UI, Arial, sans-serif" fill="#991B1B">
+    UserService
+  </text>
+
+  <rect x="420" y="800" width="660" height="90" rx="18" fill="#FFFFFF" stroke="#94A3B8" stroke-width="2"/>
+  <text x="750" y="835" text-anchor="middle" font-size="22" font-family="Segoe UI, Arial, sans-serif" fill="#0F172A" font-weight="700">
+    6. Repository + PostgreSQL + JSON response
+  </text>
+  <text x="750" y="862" text-anchor="middle" font-size="15" font-family="Segoe UI, Arial, sans-serif" fill="#475569">
+    Repository runs SQL through JDBC, service returns data, handler sends status code and JSON body
+  </text>
+
+  <rect x="80" y="350" width="280" height="110" rx="18" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="2"/>
+  <text x="220" y="388" text-anchor="middle" font-size="19" font-family="Segoe UI, Arial, sans-serif" fill="#0F172A" font-weight="700">
+    Failure branch
+  </text>
+  <text x="220" y="418" text-anchor="middle" font-size="15" font-family="Segoe UI, Arial, sans-serif" fill="#475569">
+    missing token
+  </text>
+  <text x="220" y="440" text-anchor="middle" font-size="15" font-family="Segoe UI, Arial, sans-serif" fill="#475569">
+    invalid role / inactive user
+  </text>
+
+  <rect x="1140" y="350" width="280" height="110" rx="18" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="2"/>
+  <text x="1280" y="388" text-anchor="middle" font-size="19" font-family="Segoe UI, Arial, sans-serif" fill="#0F172A" font-weight="700">
+    Validation branch
+  </text>
+  <text x="1280" y="418" text-anchor="middle" font-size="15" font-family="Segoe UI, Arial, sans-serif" fill="#475569">
+    bad JSON
+  </text>
+  <text x="1280" y="440" text-anchor="middle" font-size="15" font-family="Segoe UI, Arial, sans-serif" fill="#475569">
+    invalid dates / amount / UUID
+  </text>
+
+  <line x1="750" y1="190" x2="750" y2="240" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="750" y1="310" x2="750" y2="360" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="750" y1="430" x2="750" y2="480" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="750" y1="550" x2="380" y2="620" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="750" y1="550" x2="750" y2="620" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="750" y1="550" x2="1120" y2="620" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <line x1="380" y1="740" x2="590" y2="800" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="750" y1="740" x2="750" y2="800" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="1120" y1="740" x2="910" y2="800" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <line x1="610" y1="395" x2="360" y2="405" stroke="#94A3B8" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="890" y1="395" x2="1140" y2="405" stroke="#94A3B8" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <text x="470" y="584" text-anchor="middle" font-size="14" font-family="Segoe UI, Arial, sans-serif" fill="#475569">viewer / analyst / admin</text>
+  <text x="1000" y="584" text-anchor="middle" font-size="14" font-family="Segoe UI, Arial, sans-serif" fill="#475569">admin only</text>
+  <text x="220" y="478" text-anchor="middle" font-size="14" font-family="Segoe UI, Arial, sans-serif" fill="#64748B">401 or 403</text>
+  <text x="1280" y="478" text-anchor="middle" font-size="14" font-family="Segoe UI, Arial, sans-serif" fill="#64748B">400</text>
+</svg>
